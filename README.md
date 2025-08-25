@@ -77,15 +77,15 @@ All settings are in `terraform.tfvars`:
 - **admin_public_key**: Your SSH public key (required)
 - **Network CIDRs**: Usually no changes needed
 - **DNS IPs**: Usually no changes needed
-- **VM size**: DNS server size (default: Standard_B1s)
+- **VM size**: DNS server size (default: Standard_B1ls)
 - **tags**: Resource tags for cost tracking
 
 ## Cost Estimate
 
 - **Private DNS Resolvers**: ~€40/month each (2 total = €80/month)
-- **VM (Standard_B1s)**: ~€13/month
+- **VM (Standard_B1ls)**: ~€7/month
 - **Storage & Networking**: ~€2/month
-- **Total**: ~€95/month
+- **Total**: ~€89/month
 
 **Important**: Remember to destroy when done: `terraform destroy -var-file=terraform.tfvars`
 
