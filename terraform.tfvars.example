@@ -1,0 +1,47 @@
+# Azure Multi-Subscription DNS Lab - Example Configuration
+# =========================================================
+# Copy this file to terraform.tfvars and edit with your settings before deployment
+
+# Azure Configuration
+# -------------------
+location = "westeurope"  # Azure region for all resources
+prefix   = "dnslab"      # Resource name prefix (max 6 chars, lowercase+numbers only)
+
+# SSH Configuration  
+# -----------------
+# Replace with your actual SSH public key
+# Generate with: ssh-keygen -t rsa -b 4096 -f ~/.ssh/azure-dns-lab
+admin_public_key = "ssh-rsa YOUR_PUBLIC_KEY_HERE"
+
+# Network Configuration (Advanced - usually no changes needed)
+# ------------------------------------------------------------
+hub_vnet_cidr             = "10.100.0.0/16"
+subscription_a_vnet_cidr = "10.1.0.0/16"
+subscription_b_vnet_cidr = "10.2.0.0/16"
+
+# DNS Server Configuration
+# -----------------------
+central_dns_ip        = "10.100.1.10"  # Central BIND9 DNS server IP
+subscription_a_dns_ip = "10.1.0.68"     # Subscription A DNS resolver IP
+subscription_b_dns_ip = "10.2.0.68"     # Subscription B DNS resolver IP
+
+# VM Configuration
+# ---------------
+dns_vm_size = "Standard_B1ls"  # DNS server VM size (1 vCPU, 0.5GB RAM - cost optimized)
+
+# Storage Account Configuration
+# ----------------------------
+storage_account_tier         = "Standard"
+storage_replication_type     = "LRS"
+storage_allow_public_access  = false
+
+# Resource Tags
+# ------------
+tags = {
+  Environment = "Lab"
+  Purpose     = "Multi-Subscription DNS Testing"
+  Owner       = "Your Name"
+  CostCenter  = "IT-Lab"
+  Project     = "Azure-DNS-Challenge"
+  CreatedBy   = "Terraform"
+}
