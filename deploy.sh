@@ -39,7 +39,6 @@ terraform plan -var-file=terraform.tfvars
 
 echo ""
 echo "IMPORTANT: Review the plan above carefully!"
-echo "   This will create resources that cost approximately €95/month."
 echo ""
 read -p "Do you want to proceed with deployment? (y/N): " -n 1 -r
 echo ""
